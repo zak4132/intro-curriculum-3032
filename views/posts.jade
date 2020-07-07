@@ -14,11 +14,26 @@ html(lang="jp")
   body(class="container")
     div(class="page-header")
       a(href="/logout", class="btn btn-info pull-right") ログアウト
-      h1 秘密の匿名掲示板
+      h1 スレッド名
     h2 新規投稿
     form(method="post", action="/posts")
       div(class="form-group")
         textarea(name="content", class="form-control", rows="4")
+      h3 Programming
+      div(class="form-group")
+        input(type="number", name="Programming", class="form-control", value="20", max="100")
+      h3 Language
+      div(class="form-group")
+        input(type="number", name="Language", class="form-control", value="20", max="100")
+      h3 Communication
+      div(class="form-group")
+        input(type="number", name="Communication", class="form-control", value="20", max="100")
+      h3 Experience
+      div(class="form-group")
+        input(type="number", name="Experience", class="form-control", value="20", max="100")
+      h3 Judgement
+      div(class="form-group")
+        input(type="number", name="Judgement", class="form-control", value="20", max="100")
         input(type="hidden", name="oneTimeToken", value="#{oneTimeToken}")
       div(class="form-group")
         button(type="submit", class="btn btn-info pull-right") 投稿
@@ -35,6 +50,11 @@ html(lang="jp")
             span #{post.id} : ID:#{originalTrackingId}
         div(class="panel-body")
           p(style="white-space:pre;") #{post.content}
+          p(style="white-space:pre;") #{post.Programming}
+          p(style="white-space:pre;") #{post.Language}
+          p(style="white-space:pre;") #{post.Communication}
+          p(style="white-space:pre;") #{post.Experience}
+          p(style="white-space:pre;") #{post.Judgement}
         div(class="panel-footer")
           div 投稿日時: #{post.formattedCreatedAt}
           - var isAdmin = (user === 'admin')
